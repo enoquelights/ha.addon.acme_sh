@@ -23,19 +23,19 @@ if [ -n "$SERVER" ]; then
     SERVER_ARG="--server $SERVER"
 fi
 
-/root/.acme.sh/acme.sh --register-account -m ${ACCOUNT} $SERVER_ARG
+# /root/.acme.sh/acme.sh --register-account -m ${ACCOUNT} $SERVER_ARG
 
-/root/.acme.sh/acme.sh --issue "${DOMAIN_ARR[@]}" \
---dns "$DNS_PROVIDER" \
-$SERVER_ARG
+# /root/.acme.sh/acme.sh --issue "${DOMAIN_ARR[@]}" \
+# --dns "$DNS_PROVIDER" \
+# $SERVER_ARG
 
-/root/.acme.sh/acme.sh --install-cert "${DOMAIN_ARR[@]}" \
---fullchain-file "/ssl/${CERTFILE}" \
---key-file "/ssl/${KEYFILE}" \
+# /root/.acme.sh/acme.sh --install-cert "${DOMAIN_ARR[@]}" \
+# --fullchain-file "/ssl/${CERTFILE}" \
+# --key-file "/ssl/${KEYFILE}" \
 
 /root/.acme.sh/acme.sh --issue --standalone -d "${DOMAIN_ARR[@]}" \
     --server https://$SERVER_ARG \
-    --ca-bundle "/ssl/${ROOT_CA}" \
+    --ca-bundle "/certs/${ROOT_CA}" \
     --fullchain-file "/ssl/${CERTFILE}" \
     --key-file "/ssl/${KEYFILE}"
 
