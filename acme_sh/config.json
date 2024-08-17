@@ -1,9 +1,9 @@
 {
-  "name": "ACME.sh Certs",
-  "version": "2.1.1",
-  "slug": "acme_sh",
-  "description": "Manage certificates with ACME.sh",
-  "url": "https://github.com/wernerhp/ha_addon_acme_sh",
+  "name": "ACME.sh Certs for SmallStep",
+  "version": "0.1",
+  "slug": "acme_sh_ss",
+  "description": "Manage certificates with ACME.sh and SmallStep",
+  "url": "https://github.com/enoquelights/ha_addon_acme_sh",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "once",
   "boot": "manual",
@@ -15,12 +15,14 @@
     "domains": [null],
     "certfile": "fullchain.pem",
     "keyfile": "privkey.pem",
+    "root_ca": "pathtorootca"
     "dns": {}
   },
   "schema": {
     "account": "str",
     "server": "str",
     "domains": ["str"],
+    "root_ca": "str",
     "certfile": "str",
     "keyfile": "str",
     "dns": {
