@@ -1,5 +1,5 @@
 {
   "name": "Home Assistant ACME.sh Certs For SmallStep",
   "url": "https://github.com/enoquelights/ha_addon_acme_sh",
-  "maintainer": "Grim"
+  "maintainer": "Grim <grim@cynnthesis.com>"
 }
