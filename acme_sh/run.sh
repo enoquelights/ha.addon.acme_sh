@@ -7,6 +7,7 @@ KEYFILE=$(bashio::config 'keyfile')
 CERTFILE=$(bashio::config 'certfile')
 DNS_PROVIDER=$(bashio::config 'dns.provider')
 DNS_ENVS=$(bashio::config 'dns.env')
+ROOT_CA=$(bashio::config 'account')
 
 for env in $DNS_ENVS; do
     export $env
@@ -31,5 +32,11 @@ $SERVER_ARG
 /root/.acme.sh/acme.sh --install-cert "${DOMAIN_ARR[@]}" \
 --fullchain-file "/ssl/${CERTFILE}" \
 --key-file "/ssl/${KEYFILE}" \
+
+/root/.acme.sh/acme.sh --issue --standalone -d "${DOMAIN_ARR[@]}" \
+    --server https://$SERVER_ARG \
+    --ca-bundle "/ssl/${ROOT_CA}" \
+    --fullchain-file "/ssl/${CERTFILE}" \
+    --key-file "/ssl/${KEYFILE}"
 
 tail -f /dev/null
